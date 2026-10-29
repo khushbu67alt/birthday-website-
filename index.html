@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A romantic birthday surprise website made with love.">
+  <title>Happy Birthday, My Love 💗</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for romantic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background decorative floating elements -->
+  <div class="floating-hearts-bg" id="floatingHeartsBg" aria-hidden="true"></div>
+
+  <!-- Fullscreen Confetti Canvas -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- SECTION 1: WELCOME SCREEN (Curtain overlay) -->
+  <section class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-label="Welcome Surprise Screen">
+    <div class="welcome-card">
+      <div class="sparkle-icon" aria-hidden="true">✨</div>
+      <h1 class="welcome-title">I Made Something Special Just for You 💗</h1>
+      <p class="welcome-subtitle">A little surprise for the most special person in my life.</p>
+      <button class="primary-btn pulse-animation" id="openSurpriseBtn" type="button">
+        Open Your Surprise 💌
+      </button>
+      <p class="welcome-hint">Turn your volume up for the best experience 🎶</p>
+    </div>
+  </section>
+
+  <!-- MAIN EXPERIENCE CONTAINER -->
+  <div class="main-content is-hidden" id="mainContent" aria-hidden="true">
+
+    <!-- FLOATING MUSIC PLAYER (Sticky widget) -->
+    <aside class="music-player" id="musicPlayer" aria-label="Romantic Background Music Player">
+      <audio id="bgMusic" preload="metadata">
+        <source src="audio/our-song.mp3" type="audio/mpeg">
+        Your browser does not support audio playback.
+      </audio>
+      <div class="music-info">
+        <span class="music-note" aria-hidden="true">🎵</span>
+        <div class="music-text">
+          <span class="music-label">Our Song</span>
+          <span class="music-status" id="musicStatus">Click play to listen</span>
+        </div>
+      </div>
+      <button class="music-toggle-btn" id="musicToggleBtn" type="button" aria-label="Play background music">
+        <span id="musicBtnIcon" aria-hidden="true">▶</span>
+      </button>
+      <div class="equalizer" id="equalizer" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+    </aside>
+
+    <!-- SECTION 2: BIRTHDAY HERO -->
+    <header class="hero-section" id="heroSection">
+      <div class="container hero-container">
+        <div class="hero-tag">A Special Day For A Special Soul</div>
+        <h1 class="hero-title" id="heroGreeting">Happy Birthday, <span class="recipient-name" id="heroRecipientName">My Love</span> ❤️</h1>
+        <p class="hero-subtitle" id="heroSubtitle">Today is all about celebrating you, your kindness, your smile, and the warmth you bring into my world every single day.</p>
+        
+        <!-- CSS-Rendered Birthday Cake -->
+        <div class="cake-wrapper" aria-label="Illustrated Birthday Cake with a glowing candle">
+          <div class="candle">
+            <div class="flame" id="cakeFlame"></div>
+          </div>
+          <div class="cake-layer cake-top">
+            <div class="frosting"></div>
+          </div>
+          <div class="cake-layer cake-middle">
+            <div class="frosting"></div>
+          </div>
+          <div class="cake-layer cake-bottom">
+            <div class="frosting"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="primary-btn scroll-btn" id="scrollToGalleryBtn" type="button">
+            Scroll to Our Memories ↓
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 3: OUR PHOTO GALLERY -->
+    <section class="gallery-section" id="gallerySection" aria-labelledby="galleryHeading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Little Moments, Big Love</span>
+          <h2 class="section-title" id="galleryHeading">Our Photo Gallery 📸</h2>
+          <p class="section-desc">Every moment spent with you is a memory I treasure forever.</p>
+        </div>
+
+        <!-- Polaroid Grid -->
+        <div class="polaroid-grid" id="polaroidGrid">
+          <!-- 6 Polaroid Cards populated dynamically or handled with graceful image fallback -->
+          <!-- Card 1 -->
+          <article class="polaroid-card" tabindex="0" data-index="0" role="button" aria-label="Open photo 1 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo1.jpg" alt="A lovely photo of us smiling together" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>📸</span>
+                <p>Add images/photo1.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-0">Your handsome smile ✨</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="polaroid-card" tabindex="0" data-index="1" role="button" aria-label="Open photo 2 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo2.jpg" alt="A special date we had" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>🌷</span>
+                <p>Add images/photo2.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-1">My favorite place is with you 💕</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="polaroid-card" tabindex="0" data-index="2" role="button" aria-label="Open photo 3 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo3.jpg" alt="A candid happy memory together" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>☕</span>
+                <p>Add images/photo3.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-2">Laughs we will never forget 💫</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="polaroid-card" tabindex="0" data-index="3" role="button" aria-label="Open photo 4 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo4.jpg" alt="A warm adventure or road trip" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>🌊</span>
+                <p>Add images/photo4.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-3">Adventures by your side 🌅</p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="polaroid-card" tabindex="0" data-index="4" role="button" aria-label="Open photo 5 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo5.jpg" alt="A cozy peaceful day together" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>✨</span>
+                <p>Add images/photo5.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-4">The comfort you bring me 🧸</p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="polaroid-card" tabindex="0" data-index="5" role="button" aria-label="Open photo 6 in lightbox">
+            <div class="polaroid-image-frame">
+              <img src="images/photo6.jpg" alt="Celebrating another sweet milestone" class="polaroid-img" loading="lazy">
+              <div class="image-fallback" aria-hidden="true">
+                <span>🥂</span>
+                <p>Add images/photo6.jpg</p>
+              </div>
+            </div>
+            <p class="polaroid-caption" id="caption-5">Here is to many more chapters 🥂</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESSIBLE LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Photo Lightbox" hidden>
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxCloseBtn" type="button" aria-label="Close Lightbox">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrevBtn" type="button" aria-label="Previous photo">‹</button>
+        <div class="lightbox-figure">
+          <img src="" alt="" class="lightbox-img" id="lightboxImg">
+          <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNextBtn" type="button" aria-label="Next photo">›</button>
+      </div>
+    </div>
+
+    <!-- SECTION 4: A LETTER FROM MY HEART -->
+    <section class="letter-section" id="letterSection" aria-labelledby="letterSectionTitle">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Straight From My Heart</span>
+          <h2 class="section-title" id="letterSectionTitle">A Letter for You 💌</h2>
+          <p class="section-desc">Tap the wax seal on the envelope to unfold my words.</p>
+        </div>
+
+        <div class="envelope-wrapper">
+          <div class="envelope" id="envelopeContainer" tabindex="0" role="button" aria-expanded="false" aria-label="Open Birthday Letter Envelope">
+            <div class="envelope-back"></div>
+            
+            <!-- Letter Sheet Inside -->
+            <div class="letter-paper" id="letterPaper" aria-live="polite">
+              <div class="paper-texture"></div>
+              <div class="letter-content">
+                <span class="letter-date" id="letterDate">On Your Special Day 🌸</span>
+                <h3 class="letter-greeting" id="letterSalutation">My Dearest,</h3>
+                <div class="letter-body" id="letterBody">
+                  <!-- Configurable letter paragraphs injected by script.js -->
+                </div>
+                <div class="letter-signature">
+                  <p class="sign-text">Forever yours with all my love,</p>
+                  <p class="sign-name" id="letterSenderName">Your Girl 💗</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="envelope-front-left"></div>
+            <div class="envelope-front-right"></div>
+            <div class="envelope-flap" id="envelopeFlap"></div>
+            <div class="wax-seal" id="waxSeal" aria-hidden="true">
+              <span>❤️</span>
+            </div>
+          </div>
+
+          <div class="envelope-controls">
+            <button class="secondary-btn" id="letterToggleBtn" type="button">
+              Tap to Open Letter ✉️
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: HIDDEN ROMANTIC SURPRISE -->
+    <section class="surprise-section" id="surpriseSection" aria-labelledby="surpriseTitle">
+      <div class="container">
+        <div class="surprise-card">
+          <div class="sparkle-bubble" aria-hidden="true">🎁</div>
+          <h2 class="surprise-heading" id="surpriseTitle">A Little Secret Just for Today</h2>
+          <p class="surprise-prompt">I have tucked away one more reminder of how much you mean to me.</p>
+          
+          <button class="primary-btn surprise-trigger-btn" id="surpriseRevealBtn" type="button">
+            There's One More Surprise for You 💝
+          </button>
+
+          <!-- Hidden Surprise Reveal Container -->
+          <div class="surprise-reveal-box is-collapsed" id="surpriseRevealBox" aria-live="polite">
+            <div class="surprise-inner-content">
+              <div class="heart-burst-icon" aria-hidden="true">💖</div>
+              <h3 class="reveal-title">My Heartfelt Promise</h3>
+              <p class="reveal-message" id="hiddenSurpriseText">
+                <!-- Injected from config -->
+              </p>
+              <button class="reset-surprise-btn" id="resetSurpriseBtn" type="button">
+                Replay This Moment ✨
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FINAL BIRTHDAY MESSAGE & FOOTER -->
+    <footer class="footer-section" id="footerSection">
+      <div class="container footer-container">
+        <div class="footer-heart-symbol" aria-hidden="true">
+          <span class="pulsing-heart">💗</span>
+        </div>
+        <h2 class="footer-title">Made with all my love, just for you 💗</h2>
+        <p class="footer-subtext">Thank you for being my favorite part of every day.</p>
+        
+        <div class="footer-actions">
+          <button class="secondary-btn" id="replayWebsiteBtn" type="button">
+            Replay the Surprise ↻
+          </button>
+        </div>
+
+        <div class="footer-credit">
+          <p>© Made with infinite love • Happy Birthday, <span id="footerRecipientName">My Love</span></p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
